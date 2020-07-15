@@ -1,77 +1,52 @@
-import javax.swing.JOptionPane;
 public class Quiz {
-    static int nQuestions = 0;
-    static int nCorrect = 0;
+
     public static void main(String[] args) {
-        String question;
-        question = "What is a quiz?\n";
-        question += "A. a test of knowledge, especially a brief informal test given to students\n";
-        question += "B. 42\n";
-        question += "C. a duck\n";
-        question += "D. to get to the other side\n";
-        question += "E. To be or not to be, that is the question.";
-        check(question, ask(question));
-        nQuestions++;
-        JOptionPane.showMessageDialog(null, "Total question: "+ nQuestions + "\n" + "Correct answer given: "+ nCorrect);
-        question = "Who is the PUBG god\n";
-        question += "A. chocOTAko\n";
-        question += "B. Dr. Disrespect\n";
-        question += "C. Shroud\n";
-        check(question, ask(question));
-        nQuestions++;
-        JOptionPane.showMessageDialog(null, "Total question: "+ nQuestions + "\n" + "Correct answer given: "+ nCorrect);
-        question = "Who is the best footballer\n";
-        question += "A. messi\n";
-        question += "B. c.ronaldo\n";
-        question += "C. kaka\n";
-        check(question, ask(question));
-        nQuestions++;
-        JOptionPane.showMessageDialog(null, "Total question: "+ nQuestions + "\n" + "Correct answer given: "+ nCorrect);
-        if (nCorrect == 3){
-            JOptionPane.showMessageDialog(null, "congratulation!! You have corrected all.");
-        }
+        MultipleChoiceQuestion question1 = new MultipleChoiceQuestion("What is a quiz?",
+                "a test of knowledge, especially a brief informal test given to students",
+                "42",
+                "a duck",
+                "to get to the other side",
+                "To be or not to be, that is the question.",
+                "A");
+
+        MultipleChoiceQuestion question2 = new MultipleChoiceQuestion("When earth was created?",
+                "a long, long ago",
+                "right now",
+                "the best of times",
+                "the worst of times",
+                "nevermore",
+                "A");
+        MultipleChoiceQuestion question3 = new MultipleChoiceQuestion("Where is a galaxy?",
+                "under the sea",
+                "right here",
+                "there and back again",
+                "the other side of the mountain",
+                "a galaxy far, far away",
+                "E");
+        MultipleChoiceQuestion question4 = new MultipleChoiceQuestion("Where is C. RONALDO?",
+                "under cave",
+                "Barcelona",
+                "Juventus",
+                "the other side of the mountain",
+                "Real Madrid",
+                "C");
+        MultipleChoiceQuestion question5 = new MultipleChoiceQuestion("Where is L. Messi?",
+                "Brazil",
+                "Barcelona",
+                "Juventus",
+                "liverpool",
+                "chelsea",
+                "B");
+        question1.check();
+
+        question2.check();
+
+        question3.check();
+
+        question4.check();
+
+        question5.check();
+
+        MultipleChoiceQuestion.showResults();
     }
-
-    public static String ask(String question){
-        return JOptionPane.showInputDialog(question).toUpperCase();
-
-    }
-
-    public static void check(String question, String correctAnswer) {
-        if (question.contains("quiz")) {
-            if (correctAnswer.equals("A")) {
-                JOptionPane.showMessageDialog(null, "Correct!");
-                nCorrect++;
-            } else if (correctAnswer.equals("B") || correctAnswer.equals("C") || correctAnswer.equals("D") || correctAnswer.equals("E")) {
-                JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + " A");
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid answer. Please enter A, B, C, D, or E.");
-                check(question, ask(question));
-            }
-        } else if (question.contains("PUBG")){
-            if (correctAnswer.equals("C")) {
-                JOptionPane.showMessageDialog(null, "Correct!");
-                nCorrect++;
-            } else if (correctAnswer.equals("B") || correctAnswer.equals("A")){
-                JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + " C");
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid answer. Please enter A, B or C");
-                check(question, ask(question));
-            }
-        } else if (question.contains("footballer")) {
-            if (correctAnswer.equals("B")) {
-                JOptionPane.showMessageDialog(null, "Correct!");
-                nCorrect++;
-            } else if (correctAnswer.equals("C") || correctAnswer.equals("A")){
-                JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is " + " B");
-            } else {
-                JOptionPane.showMessageDialog(null, "Invalid answer. Please enter A, B or C");
-                check(question, ask(question));
-            }
-        }
-
-    }
-
 }
-
